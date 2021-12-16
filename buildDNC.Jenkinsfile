@@ -5,7 +5,7 @@ node('docker'){
 		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/jwaddkunzleigh/JenkinsDocker']]]);
 	}
 	stage('build'){
-		dockerImage = docker.build('chrisbbehrens/agent-dnc:v$BUILD_NUMBER', './dotnetcore');
+		dockerImage = docker.build('mordecaimook/agent-dnc:v$BUILD_NUMBER', './dotnetcore');
 	}
 	stage('push'){
 		docker.withRegistry('https://index.docker.io/v1/', 'dockerhubcreds'){
